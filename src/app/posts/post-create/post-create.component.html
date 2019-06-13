@@ -1,11 +1,31 @@
 <mat-card class="z-depth-1">
-  <mat-form-field>
-      <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
-  </mat-form-field>
-  <button
-    class="p-3 btn-block"
-    mat-raised-button
-    color="primary"
-    MatRipple
-   (click)="onAddPost()">Save button</button>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+        <label>Title:</label>
+        <input
+          matInput
+          name="title"
+          ngModel
+          required
+          #title="ngModel"/>
+          <mat-error *ngIf="title.invalid">Please enter a post's tile</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <label>Content:</label>
+        <textarea
+          matInput
+          rows="6"
+          name="content"
+          ngModel
+          required
+          #content="ngModel"></textarea>
+          <mat-error *ngIf="title.invalid">Please enter a post's content</mat-error>
+    </mat-form-field>
+    <button
+      class="p-2 btn-block"
+      mat-raised-button
+      color="primary"
+      MatRipple
+      type="submit">Post</button>
+  </form>
 </mat-card>
