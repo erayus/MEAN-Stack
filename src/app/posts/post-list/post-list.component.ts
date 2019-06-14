@@ -17,7 +17,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(private postServ: PostsService) {}
 
   ngOnInit() {
-    this.postsUI = this.postServ.getPosts();
+    this.postServ.getPosts();
     this.postSub = this.postServ.getPostUpdateListener().subscribe(
       (posts: Post[]) => {
         this.postsUI = posts;
